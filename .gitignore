@@ -1,0 +1,46 @@
+# Compiled python files
+*.py[ocd]
+
+# gedit files
+*~
+
+# Notepad++ files
+nppBackup/
+
+# Pytest dirs/files
+.pytest_cache/
+
+# git .orig files
+*.orig
+
+# Sphinx doc build dir
+_build/
+
+# Spyder IDE
+spyder_crash.log
+*.Result
+.spyproject
+.spyderproject
+
+# Special dirs and files
+build/
+dist/
+bin/
+*.egg-info/
+Thumbs.db
+.DS_Store/
+.DS_Store
+.idea/
+.cache
+.coverage*
+*.tmp
+*.temp
+*.bak
+
+# Figures and data dirs
+/plots/
+/data/
+/output/
+clusterlog.txt
+temp.py
+*api_key.txt
