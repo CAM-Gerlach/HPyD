@@ -1,0 +1,792 @@
+%% 11/23/2015
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AGUJournalTemplate.tex: this template file is for articles formatted with LaTeX
+%
+% This file includes commands and instructions
+% given in the order necessary to produce a final output that will
+% satisfy AGU requirements.
+%
+% You may copy this file and give it your
+% article name, and enter your text.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PLEASE DO NOT USE YOUR OWN MACROS
+% DO NOT USE \newcommand, \renewcommand, or \def, etc.
+%
+% FOR FIGURES, DO NOT USE \psfrag or \subfigure.
+% DO NOT USE \psfrag or \subfigure commands.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Step 1: Set the \documentclass
+%
+% There are two options for article format:
+%
+% 1) PLEASE USE THE DRAFT OPTION TO SUBMIT YOUR PAPERS.
+% The draft option produces double spaced output.
+%
+% 2) numberline will give you line numbers.
+
+%% To submit your paper:
+\documentclass{agujournal}
+\drafttrue
+
+%% For final version.
+% \documentclass{agujournal}
+
+% Now, type in the journal name: \journalname{<Journal Name>}
+
+% ie, \journalname{Journal of Geophysical Research}
+%% Choose from this list of Journals:
+%
+% JGR-Atmospheres
+% JGR-Biogeosciences
+% JGR-Earth Surface
+% JGR-Oceans
+% JGR-Planets
+% JGR-Solid Earth
+% JGR-Space Physics
+% Global Biochemical Cycles
+% Geophysical Research Letters
+% Paleoceanography
+% Radio Science
+% Reviews of Geophysics
+% Tectonics
+% Space Weather
+% Water Resource Research
+% Geochemistry, Geophysics, Geosystems
+% Journal of Advances in Modeling Earth Systems (JAMES)
+% Earth's Future
+% Earth and Space Science
+%
+%
+
+\journalname{Geophysical Research Letters}
+
+
+% Standard imports
+\usepackage[utf8]{inputenc} % Cause UTF-8 > Everything else No, seriously.
+\usepackage[T1]{fontenc} % Slightly less crappy than to default 128 charset
+\usepackage{bookmark} % Make PDF bookmarks
+
+% Extra features
+\usepackage{siunitx} % Make units.
+\usepackage{graphicx} % For graphic insertion
+\usepackage{booktabs} % For pandas tables
+
+% Bibliography
+\usepackage[
+backend=biber,
+style=authoryear,
+citestyle=authoryear
+]{biblatex}
+
+\addbibresource{hpyd_references.bib}
+
+
+\begin{document}
+
+%% ------------------------------------------------------------------------ %%
+%  Title
+%
+% (A title should be specific, informative, and brief. Use
+% abbreviations only if they are defined in the abstract. Titles that
+% start with general keywords then specific terms are optimized in
+% searches)
+%
+%% ------------------------------------------------------------------------ %%
+
+% Example: \title{This is a test title}
+
+\title{A Machine-Learning System for Hydrometeor Identification with Polarimetric Radar}
+
+%% ------------------------------------------------------------------------ %%
+%
+%  AUTHORS AND AFFILIATIONS
+%
+%% ------------------------------------------------------------------------ %%
+
+% Authors are individuals who have significantly contributed to the
+% research and preparation of the article. Group authors are allowed, if
+% each author in the group is separately identified in an appendix.)
+
+% List authors by first name or initial followed by last name and
+% separated by commas. Use \affil{} to number affiliations, and
+% \thanks{} for author notes.
+% Additional author notes should be indicated with \thanks{} (for
+% example, for current addresses).
+
+% Example: \authors{A. B. Author\affil{1}\thanks{Current address, Antartica}, B. C. Author\affil{2,3}, and D. E.
+% Author\affil{3,4}\thanks{Also funded by Monsanto.}}
+
+\authors{C. A. M. Gerlach\affil{1}}
+
+
+% \affiliation{1}{First Affiliation}
+% \affiliation{2}{Second Affiliation}
+% \affiliation{3}{Third Affiliation}
+% \affiliation{4}{Fourth Affiliation}
+
+\affiliation{1}{Department of Atmospheric Science, University of Alabama Huntsville, Huntsville, Alabama, USA}
+%(repeat as many times as is necessary)
+
+%% Corresponding Author:
+% Corresponding author mailing address and e-mail address:
+
+% (include name and email addresses of the corresponding author.  More
+% than one corresponding author is allowed in this LaTeX file and for
+% publication; but only one corresponding author is allowed in our
+% editorial system.)
+
+% Example: \correspondingauthor{First and Last Name}{email@address.edu}
+
+\correspondingauthor{C. A. M. Gerlach}{CAM.Gerlach@Gerlach.CAM}
+
+%% Keypoints, final entry on title page.
+
+% Example:
+% \begin{keypoints}
+% \item	List up to three key points (at least one is required)
+% \item	Key Points summarize the main points and conclusions of the article
+% \item	Each must be 100 characters or less with no special characters or punctuation
+% \end{keypoints}
+
+%  List up to three key points (at least one is required)
+%  Key Points summarize the main points and conclusions of the article
+%  Each must be 100 characters or less with no special characters or punctuation
+
+%\begin{keypoints}
+%\item The crowdsoured mPING dataset can be used to train a machine-learning-based hydrometeor ID algorithm.
+%\end{keypoints}
+
+\clearpage
+
+\setcounter{page}{1}
+
+%% ------------------------------------------------------------------------ %%
+%
+%  ABSTRACT
+%
+% A good abstract will begin with a short description of the problem
+% being addressed, briefly describe the new data or analyses, then
+% briefly states the main conclusion(s) and how they are supported and
+% uncertainties.
+%% ------------------------------------------------------------------------ %%
+
+%% \begin{abstract} starts the second page
+
+%\begin{abstract}
+%Fill in abstract here.
+%\end{abstract}
+
+
+%% ------------------------------------------------------------------------ %%
+%
+%  TEXT
+%
+%% ------------------------------------------------------------------------ %%
+
+%%% Suggested section heads:
+% \section{Introduction}
+%
+% The main text should start with an introduction. Except for short
+% manuscripts (such as comments and replies), the text should be divided
+% into sections, each with its own heading.
+
+% Headings should be sentence fragments and do not begin with a
+% lowercase letter or number. Examples of good headings are:
+
+% \section{Materials and Methods}
+% Here is text on Materials and Methods.
+%
+% \subsection{A descriptive heading about methods}
+% More about Methods.
+%
+% \section{Data} (Or section title might be a descriptive heading about data)
+%
+% \section{Results} (Or section title might be a descriptive heading about the
+% results)
+%
+% \section{Conclusions}
+
+
+\section{Introduction}
+
+Since the advent of polarimetric radar, insight into the phase and morphology of the sampled targets, and in turn the determination of likely hydrometeor classification, has been cited as perhaps their foremost benefit for both research and operational applications, such as microphysical research, rain/hail size classification, and the disambiguation of mixed precipitation types in a winter weather event \parencite{Zrnic1999}. With the upgrade of the National Weather Service WSR-88D S-band radar network to support dual-polarization capabilities, particular interest developed in applying these data toward enabling better forecaster diagnosis and prediction of rapidly developing weather events, such as severe convection and winter storms (\cite{Elmore2011}). Therefore, to formalize and automate the inference of target type from the radar base moments, numerous hydrometeor identification (HID) algorithms have been developed to objectivity classify the bulk composition of each radar volume.
+
+Early such algorithms, such as those by \textcite{Straka1993} and \textcite{Hoeller1994} applied a boolean-logic decision tree to the polarimetric parameter fields to classify the likely precipitation type at each radar gate. \textcite{Vivekanandan1999} pioneered an approach making use of fuzzy-logic principles, using probabilistic membership functions for each variable rather than a strictly ordered, binary-rule-based method, increasing accuracy near parameter-space boundaries, and most following work through to the present day (e.g. \cite{Dolan2013} and \textcite{Park2009}) have made use of similar techniques.
+
+Both general methodologies share the common feature of relying on threasholds and membership functions determined \textit{a priori} through independent laboratory and empirical research (see \cite{Straka2000} for a canonical example). These are typically rigorous, extensive and compiled from multiple independent sources, have clear theoretical basis, and enable algorithms developed from them to be applied immediately to any well-calibrated radar of similar wavelength. However, these pre-built tables require substantial adjustment or complete replacement when attempting to apply such algorithms to a radar of different wavelength, sub-optimal calibration, or under different assumptions regarding climate regime, storm morphology, or other characteristics deviating from those under which they were developed, and have no intrinsic means to autogenously adapt themselves to themselves to such.
+
+Considering the hydrometeor classification algorithm \parencite{Park2009} developed for the National Weather Service WSR-88D, the radar of greatest interest for operational diagnosis of precipitation type near the ground, these strengths and limitations are evident. The product was developed principally for use in warm-season deep convection, utilizes simple fuzzy-logic-based techniques applied to theoretically and empirically derived relationships, relies only on native dual-polarization radar data, and was verified in limited field campaigns and case studies. Accordingly, its utility is naturally quite limited when applied to situations outside these design goals, such in winter weather cases, determining actual precipitation type at the ground, and generating accurate probabilistic output, and there are clear opportunities for improvement using larger datasets, exogenous variables, and more sophisticated machine-learning techniques (\cite{Elmore2011}; and others cited therein).
+
+Later work by \textcite{Schuur2012} have demonstrated improvements by adding NWP-model-derived temperature profile data to the algorithm; however, the other mentioned gaps remain largely unaddressed in the referred literature. The recent mPING project \parencite{Elmore2014}, crowdsourcing precipitation-type observations from the public via a smartphone “app” to help fill these voids, offers a uniquely broad-coverage, temporally continuous, very large sample size dataset to serve as approximate “ground truth” for precipitation type at the surface. Despite the relatively informal collection method and untrained observers, these data can be employed to verify a variety of diagnostic and forecast tools (e.g. \cite{Elmore2015}).
+
+Therefore, we leverage these data to develop a random-forest-based machine learning modeling system to classify winter precipitation type at the surface over the domain of a WSR-88D radar, and characterize its performance. Furthermore, we evaluate the relative predictive value of a variety of the parameters employed, both radar moments and metadata. In section \ref{sec:method} discusses our data and approach, section \ref{sec:results} summarizes the results, and section \ref{sec:conclusions} discusses this work's limitations and outlines possibilities for future improvement.
+
+
+\section{Methodology} \label{sec:method}
+
+In summary, for this work we develop and utilize a system to automatically ingest all mPING precipitation reports meeting user-specified criteria, acquire the appropriate radar volumes for each, extract the relevant radar fields and metadata for each observation point, and train and test a random forest machine-learning model to predict the surface precipitation type at any point domain given the radar moments. Here, we review its basic process flow, input data, and methods used.
+
+
+\subsection{Data and Predictors}
+
+For this phase of the project, to limit the computing time and resources required, we limit ourselves to mPING precipitation type reports and their associated radar data spanning two winters: 2017-2018 for training the model, and 2016-2017 for testing its results. Our domain comprised all reports between 10-100 km from the KLWX (Sterling/Baltimore-Washington) WSR-88D dual-polarization radar, to reduce the relative variability in beam heights and sizes at varying ranges, as well as avoid ground clutter at closer ranges and below-beam effects at further ones, as we are working within native radar polar coordinates. In all, these amounted to $n = 2421$ reports for the training data, and $n = 2257$ reports for the test set.
+
+We also greatly reduce the large number of categories reported by mPING to a more reasonable number, to reduce the effects of reporter inexperience, small numbers of reports per category and precipitation-type ambiguity. Initially, we only consider mPING reports in the ``Rain/Snow'' category, and prune reports of mixed precipitation (due to small relative numbers and likely reporter inexperience) freezing rain or drizzle, due to the latter's lack of a discernible difference in radar properties their non-freezing equivalents, and partition the remaining into liquid (``Rain'', ``Drizzle'') and ice (``Snow/Graupel'', ``Sleet/Ice Pellets'') phase categories for classification.
+
+In all, 759 and 1035 reports of the training and test dataset, respectively, were classified into the former category, while 1662 and 1222 fell into the latter. The discrepancy between the relative numbers per category for the training and test dataset is not insignificant, and another likely artifact of the relatively small number of winter weather events and the public's tendency to concentrate their reports during them, thus leading to large variability between seasons (and likely decreased algorithm performance).
+
+The standard polarimetric base moments ($Z_h$, $Z_{DR}$, $\rho_{hv}$ and $\phi_{DP}$ were read from each file, along with Dopplar spectrum width and velocity. Other intrinsic metrics read from the file or the mPING report and used as candidate predictors include the ground range to the radar, current VCP in use, range and azimuth information to the report location, longitude and latitude of the report location, month and hour of observation time, and the elevation of each scan used. However, not all of these were eventually incorporated into the final algorithm, due to overfitting issues arising from being derived from a relatively small number of spatially-correlated event days.
+
+
+\subsection{Methods}
+
+This work's analysis procedure and machine-learning model were implemented as a modular, open-source Python package, to be available on PyPI and Github, to enable re-use and reproducibility of these results by other researchers, as well as practical employment of the machine learning modeling system devised. Aside from the below-mentioned libraries, the standard PyData stack was used throughout for data handling, analysis and visualization.
+
+After querying the OU mPING API to obtain the relevant mPING reports within the study domain, filtering them for minimum range and reducing their categories, we  match each with the WSR-88D radar file, as obtained from the Nexrad AWS API, with a volume start time closest to that of the mPING observation. We then retrieved the resulting Nexrad Archive Level II files, and calculated the radar-relative ground distance for each report for later use. PyART \parencite{Helmus2016} was used to aid the radar portion of data processing, analysis and visualization. We match each report with the range/azimuth bin closest to the report location at each elevation angle closest, which we use as the nominal center point for our radar-based retrievals.
+
+We then average the base moments within a variable-resolution grid from the point of interest, comprising an array of 5 gates (1.25 km) in range, and either 5 gates (2.5 \si{\degree}) in azimuth for Super-Res tilts, or 3 gates (3 \si{\degree}) for non-Super-Res elevations, producing a roughly balanced area at varying ranges.  The lowest five elevations are used for each scan, as every volume regardless of VCP has at least five vertical elevations even with AVSET enabled. Only the ``non-Doppler'' (low-PRF) sweeps are used for the split cut elevations, as it are these variables we are primarily concerned with for determining precipitation type, whereas maximizing data quality and avoiding range-aliased data are of greater interest; likewise, SAILS scans are also skipped.
+
+We then post-process the gathered data to prepare it for the machine-learning classifier, trimming the dataset to the selected predictor and predictand columns (by using feature selection to only employ those that enhanced algorithm performance), filling missing values with a suitable replacement, and concatenating the remaining classifications down to the desired two (liquid/ice). Scikit-Learn \parencite{scikit-learn} was used to train a random forest classifier on the training dataset, the former of which essentially comprises a large, bootstrapped ensemble of decision trees. Each of these is not dissimilar to those employed by simpler Boolean HID methods, but each accounting for multiple dimensions as appropriate to classify the data and the large number and randomization reducing overfitting bias and allowing for probabilistic output and a more robust characterization of model uncertainty.
+
+Subsequently, the trained model was then used to predict the precipitation classification for the radar gates corresponding to each of the mPING observations in the test dataset, and the results compared for accuracy. Furthermore, the algorithm hyperparameters and selected features were iteratively tuned for optimal classification accuracy. Finally, various statistics were gathered on these data, and final tables and plots produced. In order to calculate more reliable mean values and confidence intervals for such statistics, we trained 100 models with difference random seeds on bootstrap samples of the dataset and computed means and standard deviations for each.
+
+
+
+\section{Results} \label{sec:results}
+
+Overall, our algorithm performed reasonably well, with a mean accuracy of 0.692 (95\% confidence interval width 0.0107) on the independent test dataset. Given an expected accuracy near 0.5  given the relative equal distribution of rain and snow events (we do not accurately estimate it, given our limited season data availible), this is a statistically significant improvement relative to chance, whereas in \textcite{Elmore2011} the NSSL HCA did not demonstrate such in seperating the liquid/ice cases. However, we note that the out of bound accuracy estimate is significantly higher, at 0.850, which indicates a substantial degree of overfitting is present.
+
+
+\subsection{Predictor Analysis}
+
+Examining the mean relative importance values calculated from the models, we find that no one predictor dominates, with all the predictors (except for elevation 0) having importance weights between 0.01 and 0.05 (\ref{table:importance}). The only exception, elevation 0, likely was rejected by the random forest model due to exhibiting little to no variance between the events, as every WSR-88D volume scan begins at the 0.5 \si{\degree} elevation angle regardless of VCP. However, elevation 3 had a statistically significantly ($p < 0.05$) higher importance weight than the other elevations, possibly due to the greater variation for this scan altitude between the VCP x12 and VCP 2x/3x families.
+
+Overall, all polarimetric moment predictors had a similar pattern, with a maximum importance value at the first or second elevation, with decreasing importance as one moves higher in the volume. This is quite physically reasonable given the circumstances, as one would expect a stronger association between the lowest elevation angles and precipitation falling at the ground as opposed those at higher altitudes. Interestingly, all of the moments had relatively similar magnitudes of values, particularly near their maximum, with differences only barely statistically significant. Therefore, this hints at the importance of considering each in any hydrometeor ID algorithm.
+
+Surprisingly, differential reflectivity had a higher importance than any other parameter at most elevations (though not to a statistically significant degree), considering it is not very meaningful by itself without knowledge of its rate of change. Similarly, velocity and spectrum width would not be expected from the literature to have such high predictive value, particularly the former which depends entirely on orientation from the radar. However, a likely reason for the inflated importance of all of these is overfitting, which despite a random forest being resilient to is unavoidable in this case due to the strong spatial and temporal correlation of the small number of events for a season.
+
+
+
+\section{Discussion} \label{sec:conclusions}
+
+
+\subsection{Limitations}
+
+While this technique has been demonstrated to show considerable promise for its specific application, it possesses significant limitations—some intrinsic to the approach itself and the operation of current operational dual-polarization radars, and some that can be addressed through further extensions of this preliminary investigation.
+
+Chief among the latter is the limited size of the test and particularly training datasets, comprising only a relatively small number of spatially and temporally correlated winter storm events over the course of each season. As a result, the random forest algorithm lacked the suitably large and independent dataset needed to fully refine its trees and develop a more accurate picture of the high-dimensional parameter space incorporating dual-pol moments and metadata at multiple radar levels, relative to the relatively low number of dimensions (typically no more than a few pairs of 2D parameter spaces, e.g. in a 2D Boolean or fuzzy logic approach) found in traditional HID algorithms.
+
+Furthermore, many predictors that would likely otherwise show some positive predictive ability (e.g. month, range, azimuth, lat, lon) due to geographic and seasonal variations associated with precipitation type and variations in radar presentation due to increase beam height, reduction in minimum detectable reflectivity, beam broadening and azimuth-specific beam blockage actually reduced accuracy on the test dataset, as these were overfit due to specific values being favored in such events, without being representative of the underlying pattern.
+
+This combination of low sample number and small number of major events drawing the public's attention, with their attended inter-seasonal variability in character, frequency and magnitude, makes it difficult to assess the impact of tuning, parameter selection and other design choices on model accuracy, as sample variability is sufficiently large to land most such changes well within the margin of error (95\% confidence interval) of true model performance, as determined from a bootstrapped sample of random forests with varying seeds (which in turn can be viewed as a result of a boostrap sample of the data itself). Therefore, it cannot be determined to a suitably reliable extent whether adding or removing many parameters (i.e. data denial) has a statistically significant effect on ultimate performance (and thus implying an association between the threadsholds of the parameter and precipitation type) unless the magnitude of the resulting change is sufficiently large.
+
+Additional sources of error stemmed from the basic limitations of modern radar. Most prominently, as is ultimately true of any real-world radar, phase or other changes below the beam height were not accounted for, which increased with increasing range. Therefore, the radar data could be missing evidence of a refreezing or melting layer below the beam height, as well as other changes in hydrometeor characteristics. Although somewhat limited by the domain chosen, there remained a substantial discrepancy in the coverage of the 3/5 x 5 averaging areas over the one order of magnitude increase in range due to operating in native radar coordinates, which due to the limited dataset size could only be partially accounted for by the model itself. Similarly, some affects of beam broadening, reduced sensitivity, and the like as mentioned previously may remain adjusted for. 
+
+The lack of environmental data leaves the model without much of the key context a human, or a sophisticated fuzzy-logic HCA, would be able to rely on to easily decide many cases, and improve predictability on many others. Furthermore, given only minimal QC filtering was applied to the mPING data, anomolous reports may remain confusing the training and testing process. Finally, reliance on only $\phi_{DP}$ rather than a proper $K_{DP}$ estimation or at least an analog further limits the algorithm relative to existing approaches, which all incorporate it.
+
+
+
+\subsection{Extensions and Future Work}
+
+While limited in scope, this work is designed to be easily extended in the future to alleviate many of these shortcomings and further explore the possibilities inherent in applying a machine-learning method to these data. Perhaps the most obvious improvement is to simply consider more years in the analysis for a given radar, particularly for the training dataset, given that more are available.
+
+Another simple addition is calculating $K_{DP}$ alongside $\phi_{DP}$; while a computationally expensive method could be employed for the entire radar volume, a conveniently-calculated proxy for our purposes would simply be to compute the finite difference along each radial in the 3 x 5/5 x 5 sample around the point of interest, and then azimuthally average them; this would correct for system offset, backscatter phase would be minimal at S-band, and much noise would be smoothed out (the length along the radial could be increased, as necessary).
+
+Better quality control of the initial mPING reports could eliminate spurious observations, also improving both the algorithm's training performance and its consistency on the test dataset. Furthermore, these improvements could enable more sophisticated feature selection and hyperparameter tuning on the model due to reduced sample variability, thus optimizing performance. Similarly, additional classes (principally ice pellets, perhaps along with a common ``mixed'' class) could be included and predicted for, if sufficient data was available to characterize them accurately.
+
+More fundamental changes could include adding exogenous temperature and other environmental data as predictiors; an initial implementation could merely retrieve the relevant values from the nearest surface station in the NCEI archive, while a more complete solution would ingest RAP vertical  profiles and other such NWP variables, which have been shown to significantly increase accuracy in other HCAs \parencite{Schuur2012}. This algorithm could be trained and tested on other radar sites as well, either individually or in aggregation.
+
+Additionally, in along with the random forest, an ensemble of machine learning classifiers (SVM, ANN, etc) could be applied to reduce the weaknesses in any one approach. Finally, an ultimate extension could be to the MRMS dataset, which could allow easy incoperation of additional data, extension to a true national scale, increased data quality with reduced non-meteorological variability, and easy Cartesian gridding of results. This could even enable replacement of these relatively simple machine-learning techniques with a more sophisticated, ``deep learning'' convolution neural network in the future that could detect complex patterns and incorporate conceptual models, such as the bright band location and refreezing level, truly rivaling human radar interpretation.
+
+
+
+
+
+%%
+
+%  Numbered lines in equations:
+%  To add line numbers to lines in equations,
+%  \begin{linenomath*}
+%  \begin{equation}
+%  \end{equation}
+%  \end{linenomath*}
+
+
+
+%% Enter Figures and Tables near as possible to where they are first mentioned:
+%
+% DO NOT USE \psfrag or \subfigure commands.
+%
+% Figure captions go below the figure.
+% Table titles go above tables;  other caption information
+%  should be placed in last line of the table, using
+% \multicolumn2l{$^a$ This is a table note.}
+%
+%----------------
+% EXAMPLE FIGURE
+%
+% \begin{figure}[h]
+% \centering
+% when using pdflatex, use pdf file:
+% \includegraphics[width=20pc]{figsamp.pdf}
+%
+% when using dvips, use .eps file:
+% \includegraphics[width=20pc]{figsamp.eps}
+%
+% \caption{Short caption}
+% \label{figone}
+%  \end{figure}
+%
+% ---------------
+% EXAMPLE TABLE
+%
+% \begin{table}
+% \caption{Time of the Transition Between Phase 1 and Phase 2$^{a}$}
+% \centering
+% \begin{tabular}{l c}
+% \hline
+%  Run  & Time (min)  \\
+% \hline
+%   $l1$  & 260   \\
+%   $l2$  & 300   \\
+%   $l3$  & 340   \\
+%   $h1$  & 270   \\
+%   $h2$  & 250   \\
+%   $h3$  & 380   \\
+%   $r1$  & 370   \\
+%   $r2$  & 390   \\
+% \hline
+% \multicolumn{2}{l}{$^{a}$Footnote text here.}
+% \end{tabular}
+% \end{table}
+
+%% SIDEWAYS FIGURE and TABLE
+% AGU prefers the use of {sidewaystable} over {landscapetable} as it causes fewer problems.
+%
+% \begin{sidewaysfigure}
+% \includegraphics[width=20pc]{figsamp}
+% \caption{caption here}
+% \label{newfig}
+% \end{sidewaysfigure}
+%
+%  \begin{sidewaystable}
+%  \caption{Caption here}
+% \label{tab:signif_gap_clos}
+%  \begin{tabular}{ccc}
+% one&two&three\\
+% four&five&six
+%  \end{tabular}
+%  \end{sidewaystable}
+
+%% If using numbered lines, please surround equations with \begin{linenomath*}...\end{linenomath*}
+%\begin{linenomath*}
+%\begin{equation}
+%y|{f} \sim g(m, \sigma),
+%\end{equation}
+%\end{linenomath*}
+
+%%% End of body of article
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optional Appendix goes here
+%
+% The \appendix command resets counters and redefines section heads
+%
+% After typing \appendix
+%
+%\section{Here Is Appendix Title}
+% will show
+% A: Here Is Appendix Title
+%
+
+\clearpage
+
+\pagebreak
+
+
+\appendix
+
+\section{Figures}
+
+%\begin{figure}[!h]
+%\centering
+%\includegraphics[width=\textwidth]{../Maps/station_map.png}
+%\caption{Map of USCRN stations used in the analysis (green markers). Base map data source: TIGER 2017, US Census Bureau.}
+%\label{stationmap}
+%\end{figure}
+
+
+
+
+\clearpage
+
+\pagebreak
+
+
+
+\section{Tables}
+
+\renewcommand\arraystretch{0.5}
+
+\begin{table}[!h]
+\caption{Relative Importance of each Predictor in Random Forest Model}
+\label{table:importance}
+\medskip
+\small
+\textit{Notes:} Predictor names follow the field names as used in the original data, with the incrementing integer denoting successively higher volume scans. Importance is the mean relative weight over a bootstrap sample of 100 trained models, and ConfidenceInterval is the width of the 95\% confidence interval for each importance value calculated from the bootstrap sample.
+\begin{center}
+\begin{tabular}{llrr}
+\toprule
+{} &                    Predictor &  Importance &  ConfidenceInterval \\
+\midrule
+0  &                 ground\_range &      0.0403 &              0.0026 \\
+1  &                          VCP &      0.0110 &              0.0022 \\
+2  &    cross\_correlation\_ratio\_0 &      0.0372 &              0.0028 \\
+3  &    cross\_correlation\_ratio\_1 &      0.0414 &              0.0028 \\
+4  &    cross\_correlation\_ratio\_2 &      0.0389 &              0.0029 \\
+5  &    cross\_correlation\_ratio\_3 &      0.0278 &              0.0024 \\
+6  &    cross\_correlation\_ratio\_4 &      0.0219 &              0.0025 \\
+7  &         differential\_phase\_0 &      0.0432 &              0.0040 \\
+8  &         differential\_phase\_1 &      0.0422 &              0.0049 \\
+9  &         differential\_phase\_2 &      0.0372 &              0.0040 \\
+10 &         differential\_phase\_3 &      0.0375 &              0.0048 \\
+11 &         differential\_phase\_4 &      0.0375 &              0.0052 \\
+12 &  differential\_reflectivity\_0 &      0.0346 &              0.0030 \\
+13 &  differential\_reflectivity\_1 &      0.0341 &              0.0027 \\
+14 &  differential\_reflectivity\_2 &      0.0279 &              0.0026 \\
+15 &  differential\_reflectivity\_3 &      0.0202 &              0.0018 \\
+16 &  differential\_reflectivity\_4 &      0.0186 &              0.0021 \\
+17 &                  elevation\_0 &      0.0000 &              0.0000 \\
+18 &                  elevation\_1 &      0.0183 &              0.0057 \\
+19 &                  elevation\_2 &      0.0183 &              0.0055 \\
+20 &                  elevation\_3 &      0.0410 &              0.0085 \\
+21 &                  elevation\_4 &      0.0183 &              0.0068 \\
+22 &               reflectivity\_0 &      0.0372 &              0.0029 \\
+23 &               reflectivity\_1 &      0.0403 &              0.0040 \\
+24 &               reflectivity\_2 &      0.0307 &              0.0035 \\
+25 &               reflectivity\_3 &      0.0250 &              0.0025 \\
+26 &               reflectivity\_4 &      0.0242 &              0.0021 \\
+27 &             spectrum\_width\_2 &      0.0376 &              0.0034 \\
+28 &             spectrum\_width\_3 &      0.0197 &              0.0018 \\
+29 &             spectrum\_width\_4 &      0.0180 &              0.0018 \\
+30 &                   velocity\_2 &      0.0322 &              0.0025 \\
+31 &                   velocity\_3 &      0.0249 &              0.0024 \\
+32 &                   velocity\_4 &      0.0252 &              0.0024 \\
+33 &                         hour &      0.0377 &              0.0026 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+\medskip
+
+
+
+\clearpage
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Optional Glossary, Notation or Acronym section goes here:
+%
+%%%%%%%%%%%%%%
+% Glossary is only allowed in Reviews of Geophysics
+%  \begin{glossary}
+%  \term{Term}
+%   Term Definition here
+%  \term{Term}
+%   Term Definition here
+%  \term{Term}
+%   Term Definition here
+%  \end{glossary}
+
+%
+%%%%%%%%%%%%%%
+% Acronyms
+%   \begin{acronyms}
+%   \acro{Acronym}
+%   Definition here
+%   \acro{EMOS}
+%   Ensemble model output statistics
+%   \acro{ECMWF}
+%   Centre for Medium-Range Weather Forecasts
+%   \end{acronyms}
+
+%
+%%%%%%%%%%%%%%
+% Notation
+%   \begin{notation}
+%   \notation{$a+b$} Notation Definition here
+%   \notation{$e=mc^2$}
+%   Equation in German-born physicist Albert Einstein's theory of special
+%  relativity that showed that the increased relativistic mass ($m$) of a
+%  body comes from the energy of motion of the body—that is, its kinetic
+%  energy ($E$)—divided by the speed of light squared ($c^2$).
+%   \end{notation}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  ACKNOWLEDGMENTS
+%
+% The acknowledgments must list:
+%
+% •	All funding sources related to this work from all authors
+%
+% •	Any real or perceived financial conflicts of interests for any
+%	author
+%
+% •	Other affiliations for any author that may be perceived as
+% 	having a conflict of interest with respect to the results of this
+% 	paper.
+%
+% •	A statement that indicates to the reader where the data
+% 	supporting the conclusions can be obtained (for example, in the
+% 	references, tables, supporting information, and other databases).
+%
+% It is also the appropriate place to thank colleagues and other contributors.
+% AGU does not normally allow dedications.
+
+
+\acknowledgments
+This work was generously supported and assisted by Dr. Lawrence Carey of the University of Alabama in Huntsville, and Dr. Kim Elmore of the University of Oklahoma provided much helpful input. The mPING report data were obtained from the University of Oklahoma mPING API, access to which is available for free (gratis) for research use, and the WSR-88D NEXRAD Archive Level II radar data employed can be freely obtained (\textit{libre} and \textit{gratis}) from the National Centers for Climate Information, Amazon AWS or Google Cloud.
+
+
+%% ------------------------------------------------------------------------ %%
+%% Citations
+
+% Please use ONLY \citet and \citep for reference citations.
+% DO NOT use other cite commands (e.g., \cite, \citeyear, \nocite, \citealp, etc.).
+
+
+%% Example \citet and \citep:
+%  ...as shown by \citet{Boug10}, \citet{Buiz07}, \citet{Fra10},
+%  \citet{Ghel00}, and \citet{Leit74}.
+
+%  ...as shown by \citep{Boug10}, \citep{Buiz07}, \citep{Fra10},
+%  \citep{Ghel00, Leit74}.
+
+%  ...has been shown \citep [e.g.,][]{Boug10,Buiz07,Fra10}.
+
+
+
+%%  REFERENCE LIST AND TEXT CITATIONS
+%
+% Either type in your references using
+%
+% \begin{thebibliography}{}
+% \bibitem[{\textit{Kobayashi et~al.}}(2003)]{R2013} Kobayashi, T.,
+% Tran, A.~H., Nishijo, H., Ono, T., and Matsumoto, G.  (2003).
+% Contribution of hippocampal place cell activity to learning and
+% formation of goal-directed navigation in rats. \textit{Neuroscience}
+% 117, 1025--1035.
+%
+% \bibitem{}
+% Text
+% \end{thebibliography}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Or, to use BibTeX:
+%
+% Follow these steps
+%
+% 1. Type in \bibliography{<name of your .bib file>}
+%    Run LaTeX on your LaTeX file.
+%
+% 2. Run BiBTeX on your LaTeX file.
+%
+% 3. Open the new .bbl file containing the reference list and
+%   copy all the contents into your LaTeX file here.
+%
+% 4. Run LaTeX on your new file which will produce the citations.
+%
+% AGU does not want a .bib or a .bbl file. Please copy in the contents of your .bbl file here.
+
+
+%% After you run BibTeX, Copy in the contents of the .bbl file here:
+
+
+\printbibliography
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Track Changes:
+% To add words, \added{<word added>}
+% To delete words, \deleted{<word deleted>}
+% To replace words, \replaced{<word to be replaced>}{<replacement word>}
+% To explain why change was made: \explain{<explanation>} This will put
+% a comment into the right margin.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% At the end of the document, use \listofchanges, which will list the
+% changes and the page and line number where the change was made.
+
+% When final version, \listofchanges will not produce anything,
+% \added{<word or words>} word will be printed, \deleted{<word or words} will take away the word,
+% \replaced{<delete this word>}{<replace with this word>} will print only the replacement word.
+%  In the final version, \explain will not print anything.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%
+\listofchanges
+%%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Supporting Information
+%% (Optional) See AGUSuppInfoSamp.tex/pdf for requirements
+%% for Supporting Information.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+More Information and Advice:
+
+%% ------------------------------------------------------------------------ %%
+%
+%  SECTION HEADS
+%
+%% ------------------------------------------------------------------------ %%
+
+% Capitalize the first letter of each word (except for
+% prepositions, conjunctions, and articles that are
+% three or fewer letters).
+
+% AGU follows standard outline style; therefore, there cannot be a section 1 without
+% a section 2, or a section 2.3.1 without a section 2.3.2.
+% Please make sure your section numbers are balanced.
+% ---------------
+% Level 1 head
+%
+% Use the \section{} command to identify level 1 heads;
+% type the appropriate head wording between the curly
+% brackets, as shown below.
+%
+%An example:
+%\section{Level 1 Head: Introduction}
+%
+% ---------------
+% Level 2 head
+%
+% Use the \subsection{} command to identify level 2 heads.
+%An example:
+%\subsection{Level 2 Head}
+%
+% ---------------
+% Level 3 head
+%
+% Use the \subsubsection{} command to identify level 3 heads
+%An example:
+%\subsubsection{Level 3 Head}
+%
+%---------------
+% Level 4 head
+%
+% Use the \subsubsubsection{} command to identify level 3 heads
+% An example:
+%\subsubsubsection{Level 4 Head} An example.
+%
+%% ------------------------------------------------------------------------ %%
+%
+%  IN-TEXT LISTS
+%
+%% ------------------------------------------------------------------------ %%
+%
+% Do not use bulleted lists; enumerated lists are okay.
+% \begin{enumerate}
+% \item
+% \item
+% \item
+% \end{enumerate}
+%
+%% ------------------------------------------------------------------------ %%
+%
+%  EQUATIONS
+%
+%% ------------------------------------------------------------------------ %%
+
+% Single-line equations are centered.
+% Equation arrays will appear left-aligned.
+
+Math coded inside display math mode \[ ...\]
+ will not be numbered, e.g.,:
+ \[ x^2=y^2 + z^2\]
+
+ Math coded inside \begin{equation} and \end{equation} will
+ be automatically numbered, e.g.,:
+ \begin{equation}
+ x^2=y^2 + z^2
+ \end{equation}
+
+
+% To create multiline equations, use the
+% \begin{eqnarray} and \end{eqnarray} environment
+% as demonstrated below.
+\begin{eqnarray}
+  x_{1} & = & (x - x_{0}) \cos \Theta \nonumber \\
+        && + (y - y_{0}) \sin \Theta  \nonumber \\
+  y_{1} & = & -(x - x_{0}) \sin \Theta \nonumber \\
+        && + (y - y_{0}) \cos \Theta.
+\end{eqnarray}
+
+%If you don't want an equation number, use the star form:
+%\begin{eqnarray*}...\end{eqnarray*}
+
+% Break each line at a sign of operation
+% (+, -, etc.) if possible, with the sign of operation
+% on the new line.
+
+% Indent second and subsequent lines to align with
+% the first character following the equal sign on the
+% first line.
+
+% Use an \hspace{} command to insert horizontal space
+% into your equation if necessary. Place an appropriate
+% unit of measure between the curly braces, e.g.
+% \hspace{1in}; you may have to experiment to achieve
+% the correct amount of space.
+
+
+%% ------------------------------------------------------------------------ %%
+%
+%  EQUATION NUMBERING: COUNTER
+%
+%% ------------------------------------------------------------------------ %%
+
+% You may change equation numbering by resetting
+% the equation counter or by explicitly numbering
+% an equation.
+
+% To explicitly number an equation, type \eqnum{}
+% (with the desired number between the brackets)
+% after the \begin{equation} or \begin{eqnarray}
+% command.  The \eqnum{} command will affect only
+% the equation it appears with; LaTeX will number
+% any equations appearing later in the manuscript
+% according to the equation counter.
+%
+
+% If you have a multiline equation that needs only
+% one equation number, use a \nonumber command in
+% front of the double backslashes (\\) as shown in
+% the multiline equation above.
+
+% If you are using line numbers, remember to surround
+% equations with \begin{linenomath*}...\end{linenomath*}
+
+%  To add line numbers to lines in equations:
+%  \begin{linenomath*}
+%  \begin{equation}
+%  \end{equation}
+%  \end{linenomath*}
+
+
+

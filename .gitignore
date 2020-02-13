@@ -44,3 +44,13 @@ Thumbs.db
 clusterlog.txt
 temp.py
 *api_key.txt
+
+# LaTeX
+*.log
+*.aux
+*.bcf
+*.run.xml
+*.synctex.gz
+*.pdf
+*.bbl
+*.blg
